@@ -1,4 +1,4 @@
-#3.5 - Datumsprüfung
+#3.5 - Datumscheck
 
 Fragen Sie vom Benutzer eine Datumseingabe in drei Schritten ab. Im ersten Schritt soll der Benutzer den Tag, im zweiten Schritt den Monat und im dritten Schritt das Jahr eingeben (jeweils als Ganzzahlen). Das Programm soll ausgeben, ob es sich bei den drei eingegebenen Zahlen für Tag, Monat und Jahr um ein gültiges Datum handelt. Wird ein ungültiges Datum erkannt, soll der Grund für den Fehler in der Konsole ausgegeben werden.
 
