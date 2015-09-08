@@ -1,6 +1,6 @@
 #2.1
 
-Programmieren Sie ein Java-Programm, das zwei ganze Zahlen je einer Variablen zuweist, die folgenden Rechnungen ausführt und die Ergebnisse in der Command-Line anzeigt:
+Schreiben Sie ein Java-Programm, das zwei ganze Zahlen je einer Variablen zuweist, die untenstehenden Rechnungen ausführt und die Ergebnisse auf der Command-Line ausgibt:
 
 * Addition der beiden Zahlen
 * Subtraktion der beiden Zahlen
