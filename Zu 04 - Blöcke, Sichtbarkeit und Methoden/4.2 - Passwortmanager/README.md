@@ -8,7 +8,7 @@ Folgende drei Variablen soll das Programm besitzen:
 * Name der Applikation für das Passwort (Standardwert: "PG2 Master Programm")
 * Zähler für die Falscheingaben
 
-Bei diesem Verwaltungsprogramm ist es wichtig, dass die Variable des Passwort zwar gespeichert und verändert werden kann, aber nicht direkt direkt ausgelesen werden kann. (Denken Sie auch an die Sichtbarkeit der anderen Variablen!)
+Bei diesem Verwaltungsprogramm ist es wichtig, dass die Variable des Passworts zwar gespeichert und verändert, aber nicht direkt ausgelesen werden kann. (Denken Sie auch an die Sichtbarkeit der anderen Variablen!)
 
 Nachdem Sie die Klasse implementiert haben, entwickeln Sie ein kleines Beispielprogramm, um den Passwortmanager zu verwenden.
 

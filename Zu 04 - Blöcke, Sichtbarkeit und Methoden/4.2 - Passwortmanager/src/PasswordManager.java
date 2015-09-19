@@ -1,34 +1,32 @@
 public class PasswordManager {
+    // Das Passwort muss hier mit "private" vor dem Zugriff durch andere Klassen auf jeden Fall geschützt werden
+    // Die Anzahl der bisherigen Fehlversuche ist eine weniger kritische Angabe und deshalb durch "public" von anderen Klassen "einsehbar"
+    private String password = "pg2machtspass";
+    public int failedAttemptsCounter = 0;
 
-  private String password = "";
-  private int counter = 0;
-  public String applicationName;
-
-
-  public void changePassword(String newPassword, String oldPassword) {
-    if (password.equals(oldPassword)) {
-      password = newPassword;
-      System.out.println("Passwort wurde erfolgreich geändert.");
-    } else {
-      System.out.println("Das Passwort konnte nicht geändert werden.");
+    public int verifyPassword(String passwordToCheck) {
+        if (failedAttemptsCounter >= 3) {
+            // Bei zu vielen bisherigen Fehlversuchen wird ein Wert kleiner 0 zurückgegeben
+            return -1;
+        } else if (passwordToCheck.equals(password)) {
+            // Ist das Passwort richtig, ist der Returnwert 1
+            failedAttemptsCounter = 0;
+            return 1;
+        } else {
+            // Bei einem falschen Passwort gibt der PasswordManager die 0 zurück, nachdem der Zähler der Fehlversuche um 1 erhöht wurde
+            failedAttemptsCounter++;
+            return 0;
+        }
     }
-  }
 
-  public boolean verify(String passwordToCheck) {
-    if (counter >= 3) {
-      System.out.println("Ihr Account wurde gesperrt.");
-      return false;
-    } else if (passwordToCheck.equals(password)) {
-      counter = 0;
-      System.out.println("Sie haben sich erfolgreich an der Applikation "
-          + applicationName + " angemeldet.");
-      return true;
-    } else {
-
-      counter++;
-      System.out.println("Falsches Passwort (Anzahl der Fehlversuche: "
-          + counter + ")");
-      return false;
+    public boolean changePassword(String newPassword, String oldPassword) {
+        // Erst das alte Passwort mit dem neuen vergleichen und entsprechend reagieren
+        if (password.equals(oldPassword)) {
+            password = newPassword;
+            failedAttemptsCounter = 0;
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 }
