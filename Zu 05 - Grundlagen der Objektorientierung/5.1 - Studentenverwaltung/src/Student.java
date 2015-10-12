@@ -1,100 +1,97 @@
-package de.oth.pg2.qis;
+// search for #learnmore if you want to learn some java tricks!
+
 
 public class Student {
 
-	private String name;
-	private String firstname;
-	private String matriculationNumber;
-	private String eMail;
-	private CourseOfStudies courseOfStudies = new CourseOfStudies();
-	
-	public String getBaseData(){
-		return "Name des Studierenden: " + firstname + " " + name + "\n" +
-				"(angestreber)  Abschluss:  " + courseOfStudies.getTargetFinal() + "\n" +
-				"Fach: " + courseOfStudies.getName() + "\n" +
-				"Martikelnummer: " + matriculationNumber + "\n" +
-				"E-Mail: " + eMail + "\n" ;
-	}
-	
+	private String _name;
+	private String _firstName;
+	private int _ID;
+	private String _mail;
+	private Course _course;
 
-	public String getCompleteData() {
-		return "Name des Studierenden: " + firstname + " " + name + "\n" +
-				"(angestrebter)  Abschluss:  " + courseOfStudies.getTargetFinal() + "\n" +
-				"Fach: " + courseOfStudies.getName() + "\n" +
-				"Matrikelnummer: " + matriculationNumber + "\n" +
-				"E-Mail: " + eMail + "\n" + " -- Pruefungen --\n" +
-				courseOfStudies.getCoursesData() +"\n" +
-				"Notendurchschnitt: " + String.format("%10.2f", this.getNoteAverage()) + "\n";
-	}
-	
-	public double getNoteAverage(){
-		int counter = 0;
-		double all = 0;
-		for (Course course : courseOfStudies.getCourses()){
-			if (course.getNote() != 0){
-				all += course.getNote() * course.getMultiplier() * course.getCredit();
-				counter += (course.getMultiplier() * course.getCredit());
-			}
-		}
-		return (all/counter);
-	}
-	
-	public String getName() {
-		return name;
-	}
-
+	// setter
 	public void setName(String name) {
-		this.name = name;
+		this._name = name;
 	}
 
-
-	public String getFirstname() {
-		return firstname;
+	public void setFirstName(String firstName) {
+		this._firstName = firstName;
 	}
 
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-
-	public String getMatriculationNumber() {
-		return matriculationNumber;
-	}
-
-
-	public boolean setMatriculationNumber(String matriculationNumber) {
-		
-		if (matriculationNumber.length() == 7){
-		    for (char c : matriculationNumber.toCharArray())
-		    {
-		        if (!Character.isDigit(c)) return false;
-		    }
-	
-			this.matriculationNumber = matriculationNumber;
-		    return true;	
+	/* #learnmore
+	 * now it's getting interesting. Instead of setting the ID right away, you
+	 * want to check whether it's a valid ID. (exactly 7 digits)
+	 */
+	public boolean setID(int id) {
+		if (Integer.toString(id).length() == 7) {
+			this._ID = id;
+		    return true;
 		}
 		System.err.print("Martikelnummer muss 7-stellig und numerisch sein");
 		return false;
 	}
 
-
-	public String geteMail() {
-		return eMail;
+	public void setMail(String mail) {
+		this._mail = mail;
 	}
 
-
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void setCourse(Course course) {
+		this._course = course;
 	}
 
-
-	public CourseOfStudies getCourseOfStudies() {
-		return courseOfStudies;
+	// getter
+	public String getName() {
+		return this._name;
 	}
 
+	public String getFirstName() {
+		return this._firstName;
+	}
 
-	public void setCourseOfStudies(CourseOfStudies courseOfStudies) {
-		this.courseOfStudies = courseOfStudies;
+	public int getID() {
+		return this._ID;
+	}
+
+	public String getMail() {
+		return this._mail;
+	}
+
+	public Course getCourse() {
+		return this._course;
+	}
+
+	public String getBaseData() {
+		return
+		  "Name des Studierenden: " + this._firstName + ", " + this._name + "\n" +
+			"(angestreber)  Abschluss:  " + this._course.getDegree() + "\n" +
+			"Fach: " + this._course.getName() + "\n" +
+			"Martikelnummer: " + this._ID + "\n" +
+			"E-Mail: " + this._mail + "\n" ;
+	}
+
+	public String getCompleteData() {
+		return
+			"Name des Studierenden: " + this._firstName + ", " + this._name + "\n" +
+			"(angestrebter)  Abschluss:  " + this._course.getDegree() + "\n" +
+			"Fach: " + this._course.getName() + "\n" +
+			"Matrikelnummer: " + this._ID + "\n" +
+			"E-Mail: " + this._mail + "\n" +
+			" -- Pruefungen --\n" +
+			this._course.getCoursesData() +"\n" +
+			"Notendurchschnitt: " + String.format("%10.2f", this.getGradeAverage()) +
+			"\n";
+	}
+
+	public double getGradeAverage(){
+		int counter = 0;
+		double all = 0;
+
+		for (Class myclass : this._course.getClasses()){
+			if (myclass.getGrade() != 0){
+				all += myclass.getGrade()* myclass.getMultiplier() * myclass.getCredits();
+				counter += (myclass.getMultiplier() * myclass.getCredits());
+			}
+		}
+		return (all / counter);
 	}
 }
