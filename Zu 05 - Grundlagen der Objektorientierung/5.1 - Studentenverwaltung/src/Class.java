@@ -1,7 +1,6 @@
 // search for #learnmore if you want to learn some java tricks!
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 /*
  * This class called 'Class' manages the class. It holds the
@@ -10,50 +9,51 @@ import java.util.List;
  */
 public class Class {
 
-	// #learnmore naming convention: class variables with underscore _
-	private int _credits;
-	private int _multiplier;
-	private String _name;
-	private double _grade;
-	
-	// setter
-	public void setCredits(int credits) {
-		this._credits = credits;
-	}
+  // #learnmore naming convention: class variables with underscore _
+  private int _credits;
+  private int _multiplier;
+  private String _name;
+  private double _grade;
 
-	public void setMultiplier(int multiplier) {
-		this._multiplier = multiplier;
-	}
+  // setter
+  public void setCredits(int credits) {
+    this._credits = credits;
+  }
 
-	public void setName(String name) {
-		this._name = name;
-	}
+  public void setMultiplier(int multiplier) {
+    this._multiplier = multiplier;
+  }
 
-	public void setGrade(double grade) {
-		this._grade = grade;
-	}
+  public void setName(String name) {
+    this._name = name;
+  }
 
-	// getter
-	public int getCredits() {
-		return this._credits;
-	}
+  public void setGrade(double grade) {
+    this._grade = grade;
+  }
 
-	public int getMultiplier() {
-		return this._multiplier;
-	}
+  // getter
+  public int getCredits() {
+    return this._credits;
+  }
 
-	public String getName() {
-		return this._name;
-	}
+  public int getMultiplier() {
+    return this._multiplier;
+  }
 
-	public double getGrade() {
-		return this._grade;
-	}
+  public String getName() {
+    return this._name;
+  }
 
-	public String getClassData() {
-		return  "  Name: " + this._name + "\n" +
-			"  Credit: " + this._credits + "\n" +
-			"  Multiplikator: " + this._multiplier + "\n" +
-			"  Grade: " + String.format("%10.2f", this._grade) + "\n";
-	}
+  public double getGrade() {
+    return this._grade;
+  }
+
+  public String getClassData() {
+    return  
+      "  Name: " + this._name + "\n" +
+      "  Credit: " + this._credits + "\n" +
+      "  Multiplikator: " + this._multiplier + "\n" +
+      "  Grade: " + String.format("%10.2f", this._grade) + "\n";
+  }
 }
