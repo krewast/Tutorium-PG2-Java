@@ -1,37 +1,37 @@
-package de.oth.pg2_3;
-
+package oth.pg2;
 public class Color {
-	
-	private int red;
-	private int green;
-	private int blue;
 
-	public int getRed() {
-		return this.red;
-	}
+    private int _red;
+    private int _green;
+    private int _blue;
 
-	public void setRed(int value) {
-		this.red = value;
-	}
+    public int getRed() {
+        return this._red;
+    }
 
-	public int getGreen() {
-		return this.green;
-	}
+    public void setRed(int value) {
+        this._red = value;
+    }
 
-	public void setGreen(int value) {
-		this.green = value;
-	}
+    public int getGreen() {
+        return this._green;
+    }
 
-	public int getBlue() {
-		return this.blue;
-	}
+    public void setGreen(int value) {
+        this._green = value;
+    }
 
-	public void setBlue(int value) {
-		this.blue = value;
-	}
+    public int getBlue() {
+        return this._blue;
+    }
 
-	public String toString() {
-		return String.format("#%02X%02X%02X", getRed(), getGreen(), getBlue());
-	}
-	
+    public void setBlue(int value) {
+        this._blue = value;
+    }
+
+    public String toString() {
+        // format the string to the rgb color format
+        return String.format("#%02X%02X%02X", getRed(), getGreen(), getBlue());
+    }
+
 }
