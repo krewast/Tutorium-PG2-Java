@@ -15,7 +15,7 @@ OTH Regensburg - Prof. Dr. Wölfl
 Leitfaden für die Übungen:
 
 - Namen von Klassen, Methoden und Variablen soweit wie möglich auf Englisch
-- Kommentare auf Deutsch (Hier besser zu viele als zu wenige)
+- Kommentare auf Deutsch (Hier besser zu viele als zu wenige) UND English
 - Spacing: 4 Spaces (keine Tabs sondern Whitespaces)
 
 ###Markdown
@@ -46,8 +46,8 @@ Leitfaden für die Übungen:
 | 4.1     | Ja            |
 | 4.2     | Ja            |
 | 5.1     | Ja // MH      |
-| 5.2     | -             |
-| 5.3     | -             |
+| 5.2     | Ja // MH      |
+| 5.3     | Ja // MH      |
 | 5.4     | -             |
 | 5.5     | -             |
 | 6.1     | -             |
