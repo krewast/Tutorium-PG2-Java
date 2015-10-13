@@ -2,117 +2,123 @@ package de.oth.pg2.hamster;
 
 public class Hamster extends FieldObject {
 
-	private String name;
-	private int x;
-	private int y;
-	private EmptyField eField = new EmptyField(' ');
-	private int numberOfCorns = 0;
+    private String _name;
+    private int _x;
+    private int _y;
+    private EmptyField _field = new EmptyField(' ');
+    private int _cornAmount = 0;
 
-	public Hamster(char symbol, String name, int x, int y) {
-		super(symbol);
-		this.name = name;
-		this.x = x;
-		this.y = y;
-	}
+    public Hamster(char symbol, String name, int x, int y) {
+        super(symbol);
+        this._x = x;
+        this._y = y;
+        this._name = name;
+    }
+    
+    // setter
+    public void setX(int x) {
+        this._x = x;
+    }
+    
+    public void setY(int y) {
+        this._y = y;
+    }
+    
+    public void setName(String name) {
+        this._name = name;
+    }
+    
+    public void setCornAmount(int cornAmount) {
+        this._cornAmount = cornAmount;
+    }
 
-	public FieldObject[][] goForward(FieldObject[][] field) {
+    
+    // getter
+    public int getX() {
+        return this._x;
+    }
+    
+    public int getY() {
+        return this._y;
+    }
+    
+    public String getName() {
+        return this._name;
+    }
+    
+    public int getCornAmount() {
+        return this._cornAmount;
+    }
+    
+    // operations
+    
+    public void left() {
+        switch (this.getSymbol()) {
+        case '<':
+            this.setSymbol('v');
+            break;
+        case 'v':
+            this.setSymbol('>');
+            break;
+        case '>':
+            this.setSymbol('^');
+            break;
+        case '^':
+            this.setSymbol('<');
+            break;
+        }
+    }
 
-		int newX = 0;
-		int newY = 0;
+    public void right() {
+        switch (this.getSymbol()) {
+        case '<':
+            this.setSymbol('^');
+            break;
+        case 'v':
+            this.setSymbol('<');
+            break;
+        case '>':
+            this.setSymbol('v');
+            break;
+        case '^':
+            this.setSymbol('>');
+            break;
+        }
+    }
 
-		if (this.getSymbol() == '>') {
-			newX = x;
-			newY = y + 1;
-		} else if (this.getSymbol() == 'v') {
-			newX = x + 1;
-			newY = y;
-		} else if (this.getSymbol() == '<') {
-			newX = x;
-			newY = y - 1;
-		} else if (this.getSymbol() == '^') {
-			newX = x - 1;
-			newY = y;
-		}
+    public FieldObject[][] goForward(FieldObject[][] field) {
+        int newX = 0;
+        int newY = 0;
 
-		if (field[newX][newY].getClass().equals(Wall.class)) {
-			System.out.println("Achtung Wand");
-		} else {
-			if (field[newX][newY].getClass().equals(Corn.class)) {
-				System.out.println("Fresse Korn");
-				this.numberOfCorns++;
-			}
-			field[x][y] = eField;
-			field[newX][newY] = this;
-			this.x = newX;
-			this.y = newY;
-		}
-		
-		return field;
-	}
+        // move the position of the coordinates
+        if (this.getSymbol() == '>') {
+            newX = this.getX();
+            newY = this.getY() + 1;
+        } else if (this.getSymbol() == 'v') {
+            newX = this.getX() + 1;
+            newY = this.getY();
+        } else if (this.getSymbol() == '<') {
+            newX = this.getX();
+            newY = this.getY() - 1;
+        } else if (this.getSymbol() == '^') {
+            newX = this.getX() - 1;
+            newY = this.getY();
+        }
 
-	public void left() {
-		switch (this.getSymbol()) {
-		case '<':
-			this.setSymbol('v');
-			break;
-		case 'v':
-			this.setSymbol('>');
-			break;
-		case '>':
-			this.setSymbol('^');
-			break;
-		case '^':
-			this.setSymbol('<');
-			break;
-		}
-	}
+        if (field[newX][newY].getClass().equals(Wall.class)) {
+            System.out.println("Achtung Wand");
+        } else {
+            if (field[newX][newY].getClass().equals(Corn.class)) {
+                System.out.println("Fresse Korn");
+                this._cornAmount++;
+            }
+            
+            field[this.getX()][this.getY()] = this._field;
+            field[newX][newY] = this;
+            this.setX(newX);
+            this.setY(newY);
+        }
 
-	public void right() {
-		switch (this.getSymbol()) {
-		case '<':
-			this.setSymbol('^');
-			break;
-		case 'v':
-			this.setSymbol('<');
-			break;
-		case '>':
-			this.setSymbol('v');
-			break;
-		case '^':
-			this.setSymbol('>');
-			break;
-		}
-	}
-
-	public int getNumberOfCorns() {
-		return numberOfCorns;
-	}
-
-	public void setNumberOfCorns(int numberOfCorns) {
-		this.numberOfCorns = numberOfCorns;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
+        return field;
+    }
 }
