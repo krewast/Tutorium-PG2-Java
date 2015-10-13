@@ -1,97 +1,97 @@
-package de.oth.pg2_7;
+package de.oth.pg2.hamster;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Rennen {
 
-	private final ArrayList<Rennschnecke> teilnehmer;
-	private final String name;
-	private Status status;
-	private int strecke;
+    private final ArrayList<Rennschnecke> _teilnehmer;
+    private final String _name;
+    private Status _status;
+    private int _strecke;
 
-	public Rennen(String name, int strecke) {
-		this.teilnehmer = new ArrayList<Rennschnecke>();
-		this.name = name;
-		this.status = Status.WarteAufTeilnehmer;
-		this.strecke = strecke;
-	}
+    public Rennen(String name, int strecke) {
+        this._teilnehmer = new ArrayList<Rennschnecke>();
+        this._name = name;
+        this._status = Status.WarteAufTeilnehmer;
+        this._strecke = strecke;
+    }
+    
+    // Getter
 
-	public void addSchnecke(Rennschnecke schnecke) {
-		if (this.status == Status.WarteAufTeilnehmer
-				&& !this.teilnehmer.contains(schnecke)) {
-			this.teilnehmer.add(schnecke);
-		}
-	}
+    public ArrayList<Rennschnecke> getTeilnehmer() {
+        return this._teilnehmer;
+    }
 
-	public void removeSchnecke(Rennschnecke schnecke) {
-		if (this.status == Status.WarteAufTeilnehmer) {
-			teilnehmer.remove(schnecke);
-		}
-	}
+    public String getName() {
+        return this._name;
+    }
 
-	public void start() {
-		this.status = Status.Laufend;
-		boolean goOn = true;
+    public Status getStatus() {
+        return this._status;
+    }
 
-		while (goOn) {
-			goOn = false;
-			for (Rennschnecke r : teilnehmer) {
-				if (r.getZurueckgelegteStrecke() < strecke) {
-					r.kriechen();
-					goOn = true;
-				}
-			}
-		}
+    public int getStrecke() {
+        return this._strecke;
+    }
+    
+    // Setter
 
-		// Alternative L�sung zur "while"-Schleife
-		// for (Rennschnecke r : teilnehmer) {
-		// r.insZielKriechen(strecke);
-		// }
+    public void setStrecke(int strecke) {
+        if (this._status == Status.WarteAufTeilnehmer) {
+            this._strecke = strecke;
+        }
+    }
 
-		Collections.sort(teilnehmer);
-		for (int i = 0; i < teilnehmer.size(); i++) {
-			teilnehmer.get(i).setPlatzierung(i + 1);
-		}
+    public void addSchnecke(Rennschnecke schnecke) {
+        if (this._status == Status.WarteAufTeilnehmer && !this._teilnehmer.contains(schnecke)) {
+            this._teilnehmer.add(schnecke);
+        }
+    }
 
-		this.status = Status.Beendet;
-	}
+    public void removeSchnecke(Rennschnecke schnecke) {
+        if (this._status == Status.WarteAufTeilnehmer) {
+            this._teilnehmer.remove(schnecke);
+        }
+    }
 
-	@Override
-	public String toString() {
-		String ret = String
-				.format("Ergebnisse für Rennen %s, zurückzulegende Strecke: %d :\n--- Status: %s\n",
-						this.name, this.strecke, this.status);
+    public void start() {
+        this._status = Status.Laufend;
+        boolean goOn = true;
 
-		for (Rennschnecke r : teilnehmer) {
-			ret += r.toString() + "\n";
-		}
+        while (goOn) {
+            goOn = false;
+            for (Rennschnecke r : this._teilnehmer) {
+                if (r.getZurueckgelegteStrecke() < this._strecke) {
+                    r.kriechen();
+                    goOn = true;
+                }
+            }
+        }
 
-		return ret;
-	}
+        // Alternative L�sung zur "while"-Schleife
+        // for (Rennschnecke r : teilnehmer) {
+        //      r.insZielKriechen(strecke);
+        // }
 
-	// Getter / Setter
+        Collections.sort(this._teilnehmer);
+        for (int i = 0; i < this._teilnehmer.size(); i++) {
+            this._teilnehmer.get(i).setPlatzierung(i + 1);
+        }
 
-	public ArrayList<Rennschnecke> getTeilnehmer() {
-		return teilnehmer;
-	}
+        this._status = Status.Beendet;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Override
+    public String toString() {
+        String ret = String.format("Ergebnisse für Rennen %s, zurückzulegende Strecke: %d :\n--- Status: %s\n",
+                this._name, this._strecke, this._status);
 
-	public Status getStatus() {
-		return status;
-	}
+        for (Rennschnecke r : this._teilnehmer) {
+            ret += r.toString() + "\n";
+        }
 
-	public int getStrecke() {
-		return strecke;
-	}
-
-	public void setStrecke(int strecke) {
-		if (status == Status.WarteAufTeilnehmer) {
-			this.strecke = strecke;
-		}
-	}
-
+        return ret;
+    }
+    
 }

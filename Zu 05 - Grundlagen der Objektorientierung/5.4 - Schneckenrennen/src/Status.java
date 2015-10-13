@@ -1,7 +1,9 @@
-package de.oth.pg2_7;
-
+package de.oth.pg2.hamster;
 
 public enum Status {
 
-	WarteAufTeilnehmer, Laufend, Beendet
+    WarteAufTeilnehmer, 
+    Laufend, 
+    Beendet,
+
 }

@@ -1,97 +1,99 @@
-package de.oth.pg2_7;
+package de.oth.pg2.hamster;
 
 import java.util.Random;
 
 public class Rennschnecke implements Comparable<Rennschnecke> {
 
-	private static Random r = new Random();
+    private static Random r = new Random();
 
-	private String name;
-	private final int startnummer;
-	private final int geschwindigkeit;
-	private int platzierung;
-	private int zeit;
-	private int zurueckgelegteStrecke;
+    private String _name;
+    private final int _startnummer;
+    private final int _geschwindigkeit;
+    private int _platzierung;
+    private int _zeit;
+    private int _zurueckgelegteStrecke;
 
-	public Rennschnecke(String name, int startnummer, int geschwindigkeit) {
-		this.name = name;
-		this.startnummer = startnummer;
-		this.geschwindigkeit = geschwindigkeit;
-		this.platzierung = 0;
-		this.zurueckgelegteStrecke = 0;
-	}
+    public Rennschnecke(String name, int startnummer, int geschwindigkeit) {
+        this._name = name;
+        this._startnummer = startnummer;
+        this._geschwindigkeit = geschwindigkeit;
+        this._platzierung = 0;
+        this._zurueckgelegteStrecke = 0;
+    }
+    
+    // Setter
+    
+    public void setName(String name) {
+        this._name = name;
+    }
 
-	public void kriechen() {
-		zurueckgelegteStrecke += r.nextInt(geschwindigkeit + 1);
-		zeit++;
-	}
+    public void setPlatzierung(int platzierung) {
+        this._platzierung = platzierung;
+    }
+    
+    // Getter
+    
+    public String getName() {
+        return this._name;
+    }
+    
+    public int getStartnummer() {
+        return this._startnummer;
+    }
 
-	public void insZielKriechen(int strecke) {
-		while (zurueckgelegteStrecke < strecke) {
-			kriechen();
-		}
-	}
+    public int getGeschwindigkeit() {
+        return this._geschwindigkeit;
+    }
 
-	@Override
-	public String toString() {
-		return String
-				.format("Platz %d, Startnummer: %d, Name: %s, Geschwindigkeit: %d, benötigte Zeit: %d",
-						this.platzierung, this.startnummer, this.name,
-						this.geschwindigkeit, this.zeit);
-	}
+    public int getPlatzierung() {
+        return this._platzierung;
+    }
+    
+    public int getZeit() {
+        return this._zeit;
+    }
 
-	@Override
-	public int compareTo(Rennschnecke other) {
-		// Aufsteigende Sortierung 1..9 auf Grund der Zeit
-		return this.getZeit() - other.getZeit();
-	}
+    public int getZurueckgelegteStrecke() {
+        return this._zurueckgelegteStrecke;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof Rennschnecke)) {
-			return false;
-		}
+    // operations
 
-		Rennschnecke other = (Rennschnecke) o;
-		if (other.getStartnummer() != this.getStartnummer()) {
-			return false;
-		}
+    public void kriechen() {
+        this._zurueckgelegteStrecke += r.nextInt(this._geschwindigkeit + 1);
+        this._zeit++;
+    }
 
-		return true;
-	}
+    public void insZielKriechen(int strecke) {
+        while (this._zurueckgelegteStrecke < strecke) {
+            kriechen();
+        }
+    }
 
-	// Getter / Setter
+    @Override
+    public String toString() {
+        return String.format("Platz %d, Startnummer: %d, Name: %s, Geschwindigkeit: %d, benötigte Zeit: %d",
+                this._platzierung, this._startnummer, this._name, this._geschwindigkeit, this._zeit);
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Override
+    public int compareTo(Rennschnecke other) {
+        // Aufsteigende Sortierung 1..9 auf Grund der Zeit
+        return this.getZeit() - other.getZeit();
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Rennschnecke)) {
+            return false;
+        }
 
-	public int getStartnummer() {
-		return startnummer;
-	}
+        Rennschnecke other = (Rennschnecke) o;
+        if (other.getStartnummer() != this.getStartnummer()) {
+            return false;
+        }
 
-	public int getGeschwindigkeit() {
-		return geschwindigkeit;
-	}
-
-	public int getPlatzierung() {
-		return platzierung;
-	}
-
-	public void setPlatzierung(int platzierung) {
-		this.platzierung = platzierung;
-	}
-
-	public int getZeit() {
-		return this.zeit;
-	}
-
-	public int getZurueckgelegteStrecke() {
-		return zurueckgelegteStrecke;
-	}
+        return true;
+    }
 
 }

@@ -1,57 +1,56 @@
-package de.oth.pg2_7;
+package de.oth.pg2.hamster;
 
 import java.util.ArrayList;
 
 public class Wettbuero {
 
-	private final ArrayList<Wette> wetten;
-	private final ArrayList<Rennen> rennen;
+    private final ArrayList<Wette> _wetten;
+    private final ArrayList<Rennen> _rennen;
+    private static final int _quote = 2;
 
-	private static final int quote = 2;
+    public Wettbuero() {
+        this._wetten = new ArrayList<Wette>();
+        this._rennen = new ArrayList<Rennen>();
+    }
 
-	public Wettbuero() {
-		wetten = new ArrayList<Wette>();
-		rennen = new ArrayList<Rennen>();
-	}
+    public void wetteAnnehmen(Wette wette) {
+        if (wette.getRennen().getStatus() == Status.WarteAufTeilnehmer) {
+            this._wetten.add(wette);
+        }
+    }
 
-	public void wetteAnnehmen(Wette wette) {
-		if (wette.getRennen().getStatus() == Status.WarteAufTeilnehmer) {
-			wetten.add(wette);
-		}
-	}
+    public void addRennen(Rennen rennen) {
+        this._rennen.add(rennen);
+    }
 
-	public void addRennen(Rennen rennen) {
-		this.rennen.add(rennen);
-	}
+    public void start() {
+        for (Rennen r : this._rennen) {
+            if (r.getStatus() == Status.WarteAufTeilnehmer) {
+                r.start();
+            }
+        }
+    }
 
-	public void start() {
-		for (Rennen r : rennen) {
-			if (r.getStatus() == Status.WarteAufTeilnehmer) {
-				r.start();
-			}
-		}
-	}
+    public void ergebnisseErmitteln() {
+        for (Wette w : this._wetten) {
+            if (w.getRennen().getStatus() == Status.Beendet) {
+                w.setErgebnis();
+            }
+        }
+    }
 
-	public void ergebnisseErmitteln() {
-		for (Wette w : wetten) {
-			if (w.getRennen().getStatus() == Status.Beendet) {
-				w.setErgebnis();
-			}
-		}
-	}
+    public static int getQuote() {
+        return Wettbuero._quote;
+    }
 
-	public static int getQuote() {
-		return quote;
-	}
+    @Override
+    public String toString() {
+        String ret = "Wettergebnisse:\n";
+        for (Wette w : this._wetten) {
+            ret += w.toString() + "\n";
+        }
 
-	@Override
-	public String toString() {
-		String ret = "Wettergebnisse:\n";
-		for (Wette w : wetten) {
-			ret += w.toString() + "\n";
-		}
-
-		return ret;
-	}
+        return ret;
+    }
 
 }

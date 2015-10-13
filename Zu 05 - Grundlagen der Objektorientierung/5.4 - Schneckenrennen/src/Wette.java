@@ -1,82 +1,79 @@
-package de.oth.pg2_7;
+package de.oth.pg2.hamster;
 
 public class Wette {
 
-	private String spieler;
-	private Rennen rennen;
-	private Rennschnecke schnecke;
-	private int einsatz;
+    private String _spieler;
+    private Rennen _rennen;
+    private Rennschnecke _schnecke;
+    private int _einsatz;
+    private boolean _gewonnen;
+    private int _gewinn;
 
-	private boolean gewonnen;
-	private int gewinn;
+    public Wette(String spieler, Rennen rennen, Rennschnecke schnecke, int einsatz) {
+        this._spieler = spieler;
+        this._rennen = rennen;
+        this._schnecke = schnecke;
+        this._einsatz = einsatz;
+        this._gewonnen = false;
+        this._gewinn = 0;
+    }
 
-	public Wette(String spieler, Rennen rennen, Rennschnecke schnecke,
-			int einsatz) {
-		this.spieler = spieler;
-		this.rennen = rennen;
-		this.schnecke = schnecke;
-		this.einsatz = einsatz;
-		this.gewonnen = false;
-		this.gewinn = 0;
-	}
+    // Getter
+    public String getSpieler() {
+        return this._spieler;
+    }
 
-	// Getter / Setter
+    public Rennen getRennen() {
+        return this._rennen;
+    }
+    
+    public Rennschnecke getSchnecke() {
+        return this._schnecke;
+    }
+    
+    public int getEinsatz() {
+        return this._einsatz;
+    }
 
-	public String getSpieler() {
-		return spieler;
-	}
+  
+    // Setter
+    public void setSpieler(String spieler) {
+        this._spieler = spieler;
+    }
 
-	public void setSpieler(String spieler) {
-		this.spieler = spieler;
-	}
+    public void setRennen(Rennen rennen) {
+        this._rennen = rennen;
+    }
 
-	public Rennen getRennen() {
-		return rennen;
-	}
+    public void setSchnecke(Rennschnecke schnecke) {
+        this._schnecke = schnecke;
+    }
 
-	public void setRennen(Rennen rennen) {
-		this.rennen = rennen;
-	}
+    public void setEinsatz(int einsatz) {
+        this._einsatz = einsatz;
+    }
 
-	public Rennschnecke getSchnecke() {
-		return schnecke;
-	}
+    public void setErgebnis() {
+        this._gewonnen = this._rennen.getTeilnehmer().get(0).equals(this._schnecke);
+        if (this._gewonnen) {
+            this._gewinn = this._einsatz * Wettbuero.getQuote();
+        }
+    }
+    
+    
+    public boolean isGewonnen() {
+        return this._gewonnen;
+    }
 
-	public void setSchnecke(Rennschnecke schnecke) {
-		this.schnecke = schnecke;
-	}
-
-	public int getEinsatz() {
-		return einsatz;
-	}
-
-	public void setEinsatz(int einsatz) {
-		this.einsatz = einsatz;
-	}
-
-	public boolean isGewonnen() {
-		return gewonnen;
-	}
-
-	public void setErgebnis() {
-		gewonnen = rennen.getTeilnehmer().get(0).equals(this.schnecke);
-		if (gewonnen) {
-			this.gewinn = this.einsatz * Wettbuero.getQuote();
-		}
-	}
-
-	@Override
-	public String toString() {
-		if (rennen.getStatus() == Status.Beendet) {
-			return String
-					.format("Wette von Spieler %s für Rennen %s auf Rennschnecke #%d, Gewonnen %s, Gewinn: %d",
-							this.spieler, this.rennen.getName(), this.schnecke
-									.getStartnummer(), (this.gewonnen ? "ja"
-									: "nein"), this.gewinn);
-		} else {
-			return String.format(
-					"Wette von Spieler %s, Rennen %s ist noch nicht beendet",
-					this.spieler, this.rennen.getName());
-		}
-	}
+    @Override
+    public String toString() {
+        if (this._rennen.getStatus() == Status.Beendet) {
+            return String.format("Wette von Spieler %s für Rennen %s auf Rennschnecke #%d, Gewonnen %s, Gewinn: %d",
+                   this._spieler, this._rennen.getName(), this._schnecke.getStartnummer(),
+                   (this._gewonnen ? "ja" : "nein"), this._gewinn);
+        } else {
+            return String.format("Wette von Spieler %s, Rennen %s ist noch nicht beendet", this._spieler,
+                   this._rennen.getName());
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package de.oth.pg2_7;
+package de.oth.pg2.hamster;
 
 public class Programm {
 	public static void main(String[] args) {
