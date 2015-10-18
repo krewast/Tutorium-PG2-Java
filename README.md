@@ -18,9 +18,16 @@ Leitfaden für die Übungen:
 - Kommentare auf Deutsch (Hier besser zu viele als zu wenige) UND English
 - Spacing: 4 Spaces (keine Tabs sondern Whitespaces)
 
+
 ###Markdown
 
 [Markdown Documentation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+
+###Git
+
+- [15 Min. Git Tutorial](https://try.github.io/)
+- [Git Cheat Sheet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
 
 
 
@@ -40,8 +47,8 @@ Leitfaden für die Übungen:
 | 3.6     | Ja            |
 | 3.7     | -             |
 | 3.8     | Ja            |
-| 3.9     | -             |
-| 3.10    | -             |
+| 3.9     | Ja            |
+| 3.10    | Ja            |
 | 3.11    | -             |
 | 4.1     | Ja            |
 | 4.2     | Ja            |

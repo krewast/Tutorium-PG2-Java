@@ -13,46 +13,46 @@ public class Roulette {
             System.out.print("Bitte setzen Sie einen Betrag für Ihr nächstes Spiel: ");
             int bet = sc.nextInt();
 
-            // Check, ob gesetzter Betrag kleiner oder gleich dem verbleibenden Geld des Spielers
-            if (bet <= playerMoney) {
-                System.out.print("Bitte setzen Sie auf eine Farbe (r/s) oder eine Zahl (1-35): ");
-                String choice = sc.next();
-
-                // Gewählten Einsatz vom Guthaben des Spielers abziehen
-                playerMoney -= bet;
-
-                // Spielen
-                int random = getRandomNumber();
-                boolean playerWon = false;
-                if (choice.equals("r")) {
-                    // Wenn gerade Zahl, dann rot
-                    if (random % 2 == 0) {
-                        System.out.println(random + " - Rot gewinnt, Glückwunsch");
-                        playerMoney += bet * 2;
-                        playerWon = true;
-                    }
-                } else if (choice.equals("s")) {
-                    // Wenn ungerade Zahl, dann schwarz
-                    if (random % 2 != 0) {
-                        System.out.println(random + " - Schwarz gewinnt, Glückwunsch");
-                        playerMoney += bet * 2;
-                        playerWon = true;
-                    }
-                } else if ((Integer.valueOf(choice) >= 1 && Integer.valueOf(choice) <= 36)) {
-                    if (random == Integer.valueOf(choice)) {
-                        System.out.println(random + " - Sie gewinnen, Glückwunsch");
-                        playerMoney += bet * 35;
-                        playerWon = true;
-                    }
-                } else {
-                    System.err.println("Ungueltige Auswahl, neu beginnen!");
-                }
-
-                if (!playerWon) {
-                    System.out.println(random + " - Leider verloren");
-                }
-            } else {
+            // Check, ob gesetzter Betrag größer dem verbleibenden Geld des Spielers.
+            // Wenn ja, nicht spielen lassen, sondern neu nach Einsatz fragen
+            if (bet > playerMoney) {
                 System.err.println("Der eingesetzte Betrag übersteigt Ihr Guthaben. Bitte neu setzen.");
+                continue;
+            }
+
+            System.out.print("Bitte setzen Sie auf eine Farbe (r/s) oder eine Zahl (1-35): ");
+            String choice = sc.next();
+
+            // Gewählten Einsatz vom Guthaben des Spielers abziehen
+            playerMoney -= bet;
+
+            // Spielen
+            int random = getRandomNumber();
+            boolean playerWon = false;
+            if (choice.equals("r")) {
+                // Wenn gerade Zahl, dann rot
+                if (random % 2 == 0) {
+                    System.out.println("   " + random + " - Rot gewinnt, Glückwunsch");
+                    playerMoney += bet * 2;
+                    playerWon = true;
+                }
+            } else if (choice.equals("s")) {
+                // Wenn ungerade Zahl, dann schwarz
+                if (random % 2 != 0) {
+                    System.out.println("   " + random + " - Schwarz gewinnt, Glückwunsch");
+                    playerMoney += bet * 2;
+                    playerWon = true;
+                }
+            } else if ((Integer.valueOf(choice) >= 1 && Integer.valueOf(choice) <= 36)) {
+                if (random == Integer.valueOf(choice)) {
+                    System.out.println("   " + random + " - Sie gewinnen, Glückwunsch");
+                    playerMoney += bet * 35;
+                    playerWon = true;
+                }
+            }
+
+            if (!playerWon) {
+                System.out.println("   " + random + " - Leider verloren");
             }
 
             System.out.println("--------------------");
