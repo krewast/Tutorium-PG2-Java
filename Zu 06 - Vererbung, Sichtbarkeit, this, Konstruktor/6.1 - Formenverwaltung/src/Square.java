@@ -1,14 +1,15 @@
 package de.oth.pg2_4.aufgabe_1;
 
 public class Square{
-	private double length;
+    
+	private double _length;
 
 	/**
 	 * Konstruktor der Klasse
 	 * @param d
 	 */
 	public Square(double d){
-		this.length = d;
+		this._length = d;
 	}
 	
 	/**
@@ -16,23 +17,23 @@ public class Square{
 	 * @return Umfang des Quadrats
 	 */
 	public double berechneUmfang(){
-		return 4 * length;
+		return 4 * this._length;
 	}
 	
 	/**
-	 * Berechnet den Flächeninhalt des Quadrats
-	 * @return Fläche des Quadrats
+	 * Berechnet den Flï¿½cheninhalt des Quadrats
+	 * @return Flï¿½che des Quadrats
 	 */
 	public double berechneFlaeche(){
-		return length * length;
+		return this._length * this._length;
 	}
 	
 	public double getLength() {
-		return length;
+		return this._length;
 	}
 
 	public void setLength(double length) {
-		this.length = length;
+		this._length = length;
 	}
 	
 }
