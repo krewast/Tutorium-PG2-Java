@@ -2,40 +2,26 @@ package de.oth.pg2_5.aufgabe_1;
 
 public class Person {
 
-	private String firstName;
-	private String lastName;
-	
-	public Person(){
-		System.out.println("Create new person");
-	}
-	public Person(String firstName){
-		this.firstName = firstName;
-		System.out.println("Create Person: " + firstName);
-	}
-	public Person(String firstName, String lastName){
-		this.firstName = firstName;
-		this.lastName = lastName;
-		System.out.println("Create Person: " + firstName + " " + lastName);
-	}
+    private String _firstName;
+    private String _lastName;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public Person() {
+        System.out.println("Create new person");
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public Person(String firstName) {
+        this._firstName = firstName;
+        System.out.println("Create Person: " + firstName);
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public Person(String firstName, String lastName) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+        System.out.println("Create Person: " + firstName + " " + lastName);
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	@Override
-	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName
-				+ "]";
-	}
+    @Override
+    public String toString() {
+        return "Person [firstName=" + this._firstName + ", lastName=" + this._lastName + "]";
+    }
 }
