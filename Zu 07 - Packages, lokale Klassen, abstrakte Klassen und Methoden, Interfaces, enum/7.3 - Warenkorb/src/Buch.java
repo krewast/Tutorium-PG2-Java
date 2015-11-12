@@ -2,50 +2,46 @@ package de.oth.pg2.warenkorb;
 
 public class Buch implements Produkt {
 
-	private String name;
-	private String author;
-	private double preis;
-	private double mwst = 1.05;
-	
-	@Override
-	public double bruttoPreis() {
-		return preis * mwst;
-	}
+    private String _name;
+    private String _author;
+    private double _preis;
+    private double _mwst = 1.05;
 
-	@Override
-	public String toString() {
-		return "Buch [name=" + name + ", author=" + author + ", preis=" + preis
-				+ "]";
-	}
+    @Override
+    public double bruttoPreis() {
+        return this._preis * this._mwst;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Override
+    public String toString() {
+        return "Buch [name=" + this._name + ", author=" + this._author + ", preis=" + this._preis + "]";
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this._name;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public void setName(String name) {
+        this._name = name;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return this._author;
+    }
 
-	public double getPreis() {
-		return preis;
-	}
+    public void setAuthor(String author) {
+        this._author = author;
+    }
 
-	public void setPreis(double preis) {
-		this.preis = preis;
-	}
+    public double getPreis() {
+        return this._preis;
+    }
 
-	public double getMwst() {
-		return mwst;
-	}
-	
-	
+    public void setPreis(double preis) {
+        this._preis = preis;
+    }
 
+    public double getMwst() {
+        return this._mwst;
+    }
 }
