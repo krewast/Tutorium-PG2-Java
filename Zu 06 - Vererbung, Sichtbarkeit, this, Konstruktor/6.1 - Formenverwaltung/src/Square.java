@@ -1,38 +1,42 @@
 package de.oth.pg2_4.aufgabe_1;
 
-public class Square{
-	private double length;
+public class Square {
 
-	/**
-	 * Konstruktor der Klasse
-	 * @param d
-	 */
-	public Square(double d){
-		this.length = d;
-	}
-	
-	/**
-	 * Berechnet den Umfang des Quadrats
-	 * @return Umfang des Quadrats
-	 */
-	public double berechneUmfang(){
-		return 4 * length;
-	}
-	
-	/**
-	 * Berechnet den Flächeninhalt des Quadrats
-	 * @return Fläche des Quadrats
-	 */
-	public double berechneFlaeche(){
-		return length * length;
-	}
-	
-	public double getLength() {
-		return length;
-	}
+    private double _length;
 
-	public void setLength(double length) {
-		this.length = length;
-	}
-	
+    /**
+     * Konstruktor der Klasse
+     * 
+     * @param d
+     */
+    public Square(double d) {
+        this._length = d;
+    }
+
+    /**
+     * Berechnet den Umfang des Quadrats
+     * 
+     * @return Umfang des Quadrats
+     */
+    public double berechneUmfang() {
+        return 4 * this._length;
+    }
+
+    /**
+     * Berechnet den Flï¿½cheninhalt des Quadrats
+     * 
+     * @return Flï¿½che des Quadrats
+     */
+    public double berechneFlaeche() {
+        return this._length * this._length;
+    }
+
+    public double getLength() {
+        return this._length;
+    }
+
+    public void setLength(double length) {
+        this._length = length;
+    }
+
 }

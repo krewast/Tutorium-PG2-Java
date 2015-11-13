@@ -1,42 +1,34 @@
 package de.oth.pg2_4.aufgabe_2;
 
-public class MyCustomNumber extends Number{
+public class MyCustomNumber extends Number {
 
-	private double value;
-	
-	public MyCustomNumber(double value){
-		this.value = value;
-	}
-	
-	
-	public double getSquare(){
-		return value * value;
-	}
+    private double _value;
 
-	@Override
-	public int intValue() {
-		// TODO Auto-generated method stub
-		return (int) value;
-	}
+    public MyCustomNumber(double value) {
+        this._value = value;
+    }
 
+    public double getSquare() {
+        return this._value * this._value;
+    }
 
-	@Override
-	public long longValue() {
-		// TODO Auto-generated method stub
-		return (long) value;
-	}
+    @Override
+    public int intValue() {
+        return (int) this._value;
+    }
 
+    @Override
+    public long longValue() {
+        return (long) this._value;
+    }
 
-	@Override
-	public float floatValue() {
-		// TODO Auto-generated method stub
-		return (float) value;
-	}
+    @Override
+    public float floatValue() {
+        return (float) this._value;
+    }
 
-
-	@Override
-	public double doubleValue() {
-		// TODO Auto-generated method stub
-		return (double) value;
-	}
+    @Override
+    public double doubleValue() {
+        return (double) this._value;
+    }
 }
