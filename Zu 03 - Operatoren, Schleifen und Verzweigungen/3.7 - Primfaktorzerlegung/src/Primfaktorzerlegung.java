@@ -1,19 +1,17 @@
 import java.util.Scanner;
 
 public class Primfaktorzerlegung {
-
     public static void main(String[] args) {
-        // Zahl einlesen
+        // Zahl vom Benutzer einlesen
         Scanner sc = new Scanner(System.in);
-        System.out.println("Geben Sie eine Zahl ein: ");
+        System.out.print("Geben Sie eine Zahl ein: ");
         long n = sc.nextLong();
 
         // Primfaktoren ermitteln
         long[] prime = primeFactors(n);
-        // Primfaktoren ausgeben
 
-        // Ausagbe
-        System.out.println("Die Primfaktorzerlegung von " + n + " ist:");
+        // Primfaktoren ausgeben
+        System.out.print("Die Primfaktorzerlegung von " + n + " ist:");
         // Erste Zahl auf temp setzten
         long temp = prime[0];
         long potenz = 1;
@@ -26,8 +24,7 @@ public class Primfaktorzerlegung {
                 potenz++;
             }
         }
-
-        System.out.print(" " + temp + "^" + potenz);
+        System.out.println(" " + temp + "^" + potenz);
     }
 
     /**
@@ -35,13 +32,8 @@ public class Primfaktorzerlegung {
      * Multipliziert man diese, ergibt sich die Zahl. Zurückgegeben werden die
      * Zahlen in einem Array, das soviele Elemente hat wie n Primfaktoren. Sie
      * sind aufsteigend sortiert.
-     *
-     * @param n
-     *            Die zu zerlegende Zahl
-     * @return Die Primfaktoren in einem Array
      */
     public static long[] primeFactors(long n) {
-
 		/*
 		 * Die Vorgehensweise ist folgende: Aufgrund der Vorgabe, dass das
 		 * zurückgegebene Array maximal soviele Elemente haben darf wie die Zahl
@@ -97,5 +89,4 @@ public class Primfaktorzerlegung {
         // Rückgabe
         return prf;
     }
-
 }
