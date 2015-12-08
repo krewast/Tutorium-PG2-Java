@@ -7,4 +7,4 @@ Entwerfen Sie einen geeigneten Weg, die nötigen Eingaben in der Command-Line ab
     Scanner sc = new Scanner(System.in);
     float zahl = sc.nextInt();
 
-Einen Aktuellen Wechselkurs finden Sie [hier auf finanzen.net](http://www.finanzen.net/devisen/dollarkurs)
+Einen aktuellen Wechselkurs finden Sie [hier auf finanzen.net](http://www.finanzen.net/devisen/dollarkurs)

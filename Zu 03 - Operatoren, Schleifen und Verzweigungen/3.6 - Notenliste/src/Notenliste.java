@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Notenliste {
     public static void main(String[] args) {
-        String[][] students = new String[0][2]; // Zweidimensionales Array mit akutell 0 Reihen, und 2 Spalten (Spalte 1: Name, Spalte 2: Note)
+        String[][] students = new String[0][2]; // Zweidimensionales Array mit aktuell 0 Reihen, und 2 Spalten (Spalte 1: Name, Spalte 2: Note)
         int studentCounter = 0;
         boolean addAnotherStudent;
         Scanner sc = new Scanner(System.in);
@@ -40,8 +40,9 @@ public class Notenliste {
             sc.nextLine();
         } while(addAnotherStudent);
 
+        // Ausgabe der Teilnehmerliste durch simples Iterieren über die Liste
         for (int i = 0; i < students.length; i++) {
-            System.out.println(String.format("%d. %s:\t%d", i + 1, students[i][0], Integer.parseInt(students[i][1]) - 1));
+            System.out.println(String.format("%d. %s: %d", i + 1, students[i][0], Integer.parseInt(students[i][1])));
         }
     }
 }
