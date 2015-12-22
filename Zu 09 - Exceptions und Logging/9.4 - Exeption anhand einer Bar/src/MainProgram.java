@@ -1,5 +1,3 @@
-package de.oth.pg2.virtualBar;
-
 import java.util.Scanner;
 
 public class MainProgram {

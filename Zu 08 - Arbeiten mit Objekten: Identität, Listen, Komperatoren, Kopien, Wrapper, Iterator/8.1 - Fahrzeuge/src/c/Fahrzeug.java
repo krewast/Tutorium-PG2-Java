@@ -4,71 +4,69 @@ import de.oth.pg2_6.aufgabe_2.COLOR;
 
 public abstract class Fahrzeug {
 
-	private String kennzeichen;
-	private boolean istBenziner;
-	private COLOR color;
-	private int ps;
-	
-	protected Fahrzeug(String kennzeichen, boolean istBenziner, COLOR color, int ps){
-		this.kennzeichen = kennzeichen;
-		this.istBenziner = istBenziner;
-		this.color = color;
-		this.ps = ps;
-	}
-	
-	protected Fahrzeug() {
-		
-	}
+    private String kennzeichen;
+    private boolean istBenziner;
+    private COLOR color;
+    private int ps;
 
-	public Fahrzeug(String kennzeichen) {
-		this.kennzeichen = kennzeichen;
-	}
+    protected Fahrzeug(String kennzeichen, boolean istBenziner, COLOR color, int ps) {
+        this.kennzeichen = kennzeichen;
+        this.istBenziner = istBenziner;
+        this.color = color;
+        this.ps = ps;
+    }
 
-	public String getKennzeichen() {
-		return kennzeichen;
-	}
+    protected Fahrzeug() {
 
-	public void setKennzeichen(String kennzeichen) {
-		this.kennzeichen = kennzeichen;
-	}
+    }
 
-	public boolean isIstBenziner() {
-		return istBenziner;
-	}
+    public Fahrzeug(String kennzeichen) {
+        this.kennzeichen = kennzeichen;
+    }
 
-	public void setIstBenziner(boolean istBenziner) {
-		this.istBenziner = istBenziner;
-	}
+    public String getKennzeichen() {
+        return kennzeichen;
+    }
 
-	public COLOR getColor() {
-		return color;
-	}
+    public void setKennzeichen(String kennzeichen) {
+        this.kennzeichen = kennzeichen;
+    }
 
-	public void setColor(COLOR color) {
-		this.color = color;
-	}
+    public boolean isIstBenziner() {
+        return istBenziner;
+    }
 
-	public int getPs() {
-		return ps;
-	}
+    public void setIstBenziner(boolean istBenziner) {
+        this.istBenziner = istBenziner;
+    }
 
-	public void setPs(int ps) {
-		this.ps = ps;
-	}
+    public COLOR getColor() {
+        return color;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		Fahrzeug other = (Fahrzeug) obj;
-		//Überprüfung auf das gleiche Kennzeichen
-		//Early-Out Condition, falls beide "null" als Kennzeichen haben
-		if (kennzeichen == null) {
-			if (other.kennzeichen != null)
-				return false;
-		} else if (!kennzeichen.equals(other.kennzeichen))
-			return false;
-		return true;
-	}
+    public void setColor(COLOR color) {
+        this.color = color;
+    }
 
-	
-	
+    public int getPs() {
+        return ps;
+    }
+
+    public void setPs(int ps) {
+        this.ps = ps;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Fahrzeug other = (Fahrzeug) obj;
+        // ï¿½berprï¿½fung auf das gleiche Kennzeichen
+        // Early-Out Condition, falls beide "null" als Kennzeichen haben
+        if (kennzeichen == null) {
+            if (other.kennzeichen != null)
+                return false;
+        } else if (!kennzeichen.equals(other.kennzeichen))
+            return false;
+        return true;
+    }
+
 }
