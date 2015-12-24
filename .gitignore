@@ -1,3 +1,5 @@
 *.class
 .DS_Store
+.metdata
 thumbs.db
+/bin/
