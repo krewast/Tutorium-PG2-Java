@@ -3,7 +3,7 @@ public abstract class Person {
 
   // eine normale Methode innerhalb einer abstrakten Klasse:
   // "was können alle Klassen gleich?"
-  public void sayName(String name) {
+  public String sayName(String name) {
     return "Mein Name ist " + name;
   }
 

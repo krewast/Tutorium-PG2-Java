@@ -12,7 +12,7 @@ public class program {
 		Date today = new Date();
 		
 		// Definition eines Datumsformates
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 		System.out.println(sdf.format(today));
 		
 		// oder z.B... (mehr hier: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)
@@ -27,6 +27,7 @@ public class program {
 		String dateInString = "31/8/1982 10:20:56";
 		Date new_date = sdf.parse(dateInString);
 		System.out.println(new_date);
+		
 		
 		// 2. Calendar -> Date
 		Calendar calendar = Calendar.getInstance();
@@ -46,6 +47,12 @@ public class program {
 		// Bestimmte Zeiten bekommen
 		int year       = greg_cal.get(Calendar.YEAR);
 		System.out.println("year \t\t: " + year);
+		
+		
+		
+		// Calendar copy
+		Calendar new_cal = greg_cal;
+		new_cal.add(Calendar.DATE, 5);
 		
 		// Zwei Monate hinzufügen
 		greg_cal.add(Calendar.MONTH, 2);
